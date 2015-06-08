@@ -23,7 +23,7 @@ function actionSearchDepts(DeptId, Status)
          $('#loadingWrap').delay(D_LOADING).fadeOut('slow', function()
          {
             if (!res.match(/^-\d+$/))  //success
-            {
+            {  alert("test");
                document.getElementsByName("searchDeptsButton")[0].click();
             }
             else  //failed
