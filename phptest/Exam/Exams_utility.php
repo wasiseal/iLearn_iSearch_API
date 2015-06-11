@@ -1,11 +1,18 @@
 <?php
    define("SUCCESS", 0);
+   
+   define("INACTIVE", 0);
+   define("ACTIVE", 1);
+   
+   define("NOT_SUBMIT", 0);
+   define("SUBMIT", 1);
 
    define("ERR_NOT_ENOUGH_PROBLEM", -500);
    
    define("ERR_ADJUST_LEVEL", -1000);
    
    define("EXAM_FILES_DIR", "d:/phptest/Exam/Exam_files");
+   define("EXAM_RESULT_FILES_DIR", "d:/phptest/Exam/Result_files");
    
    define("MSG_NOT_ENOUGH_TRUE_FALSE", "是非题数不足");
    define("MSG_NOT_ENOUGH_SEL_PROB", "单选题数不足");

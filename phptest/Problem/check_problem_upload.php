@@ -49,6 +49,9 @@ define("UPLOAD_FILE_NAME","upload.pdf");
 //timezone
 date_default_timezone_set(TIME_ZONE);
 
+// since phpexcel maybe execute very long time, so currently set time limit to 0
+set_time_limit(0);
+
 $target_dir = "uploads/";
 $file_type = pathinfo($_FILES["fileToUpload"]["name"],PATHINFO_EXTENSION);
 $target_file = $target_dir.time().hash('md5', $_FILES["fileToUpload"]["name"]).".$file_type";
@@ -364,10 +367,10 @@ function  insert_new_problem($problem)
       $str_query = <<<EOD
                 INSERT INTO problems (ProblemType,ProblemDesc,ProblemSelectA,ProblemSelectB,ProblemSelectC,
                  ProblemSelectD,ProblemSelectE,ProblemSelectF,ProblemSelectG,ProblemSelectH,
-                 ProblemAnswer,ProblemCategory,ProblemLevel,ProblemMemo) VALUES
+                 ProblemAnswer,ProblemCategory,ProblemLevel,ProblemMemo,Status) VALUES
                 ($problem->type, '$problem->desc',
                  '$selA','$selB','$selC','$selD','$selE','$selF','$selG','$selH',
-                 '$problem->answer','$problem->functions_str',$problem->level,'$problem->memo')
+                 '$problem->answer','$problem->functions_str',$problem->level,'$problem->memo',1)
 EOD;
 
       if(mysqli_query($link, $str_query))

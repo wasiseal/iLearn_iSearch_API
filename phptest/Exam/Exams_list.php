@@ -98,6 +98,14 @@ function modifySearchExams(ExamId)
    window.open(url_str + str);
 }
 
+function uploadUserExams(ExamId)
+{
+   str = "ExamId=" + ExamId;
+   url_str = "Exam/Exams_roll_list.php?";
+   window.open(url_str + str);
+}
+
+
 function clickSearchExamssPage(obj, n)  //搜尋換頁
 {
    if (obj.className == "search_page active")

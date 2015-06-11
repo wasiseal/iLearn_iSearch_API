@@ -232,6 +232,13 @@ function loaded() {
          dataType: "json",
          success: function(res)
          {  
+            if (res.hasOwnProperty("code"))
+            {
+               if (res.code != SUCCESS) {
+                  alert(res.message);
+                  return;
+               }
+            }
             // show errors
             if (res.hasOwnProperty("errors")) {
                $.each(res.errors, function(key, val){
