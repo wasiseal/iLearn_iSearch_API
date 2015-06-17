@@ -1135,7 +1135,7 @@ $(function()
       //ajax
       str = "cmd=searchNews" + "&" + "searchNewsTitleMsg=" + encodeURIComponent(searchNewsTitleMsg) + "&" + "searchNewsfrom1=" + searchNewsfrom1 + "&"
             + "searchNewsto1=" + searchNewsto1 + "&" + "searchNewsfrom2=" + searchNewsfrom2 + "&" + "searchNewsto2=" + searchNewsto2 + "&" + "statusCheckbox=" + statusCheckbox;
-      url_str = "New/News_load.php?";
+      url_str = "News_load.php?";
       
       //alert(str);
       $('#loadingWrap').show();
@@ -1300,65 +1300,6 @@ $(function()
    });
    //***Step21 searchPrivileges end
    
-   //***Step21 searchFiles begin
-   $('.btn_submit_new.searchFiles').click(function()
-   {
-      var searchFilesNameCode = document.getElementById("searchFilesNameCode").value;
-      var searchFilesfrom1 = document.getElementsByName("searchFilesfrom1")[0].value;
-      var searchFilesto1 = document.getElementsByName("searchFilesto1")[0].value;
-   
-      var statusCheckbox = 0;
-      if (document.getElementById("searchFilesCheckBox1").checked == true)
-      {
-         statusCheckbox += 1; 
-      }
-      if (document.getElementById("searchFilesCheckBox2").checked == true)
-      {
-         statusCheckbox += 2; 
-      }
-      
-      var str;                            //送出内文字串  
-      
-      //ajax
-      str = "cmd=searchFiles" + "&" + "searchFilesNameCode=" + encodeURIComponent(searchFilesNameCode) + "&" + "searchFilesfrom1=" + searchFilesfrom1 + "&"
-            + "searchFilesto1=" + searchFilesto1 + "&" + "statusCheckbox=" + statusCheckbox;
-      url_str = "File/Files_load.php?";
-      
-      //alert(str);
-      $('#loadingWrap').show();
-      $.ajax
-      ({
-         beforeSend: function()
-         {
-            // alert(url_str + str);
-         },
-         type: 'GET',
-         url: url_str + str,
-         cache: false,
-         success: function(res)
-         {
-            //alert(res);
-            $('#loadingWrap').delay(D_LOADING).fadeOut('slow', function()
-            {
-               if (res.match(/^-/))  //success
-               {
-                  alert(MSG_SEARCH_ERROR + res);
-               }
-               else  //failed
-               {  
-                  //echo "1.0";
-                  document.getElementById("searchFilesPages").innerHTML = res;
-               }
-            });
-         },
-         error: function(xhr)
-         {
-            alert("ajax error: " + xhr.status + " " + xhr.statusText);
-         }
-      });
-   });
-   //***Step21 searchFiles end
-   
    //***Step22 searchDepts begin
    $('.btn_submit_new.searchDepts').click(function()
    {
@@ -1477,6 +1418,120 @@ $(function()
    });
    //***Step24 searchCategories end
    
+   // problem search
+   $('.btn_submit_new.searchProbs').click(function()
+   {
+      var searchProbsDescMemo = document.getElementById("searchProbsDescMemo").value;
+      var searchProbsLevel = document.getElementById("searchProbsLevel").value;
+   
+      var statusCheckbox = 0;
+      if (document.getElementById("searchProbsCheckBox1").checked == true)
+      {
+         statusCheckbox += 1; 
+      }
+      if (document.getElementById("searchProbsCheckBox2").checked == true)
+      {
+         statusCheckbox += 2; 
+      }
+      
+      var str;                            //送出内文字串  
+      
+      //ajax
+      str = "cmd=searchProbs" + "&searchProbsDescMemo=" + encodeURIComponent(searchProbsDescMemo) +
+            "&searchProbsLevel=" + encodeURIComponent(searchProbsLevel) +
+            "&statusCheckbox=" + statusCheckbox;
+      url_str = "Problem/Problems_load.php?";
+
+      $('#loadingWrap').show();
+      $.ajax
+      ({
+         beforeSend: function()
+         {
+            //alert(url_str + str);
+         },
+         type: 'GET',
+         url: url_str + str,
+         cache: false,
+         success: function(res)
+         {
+            $('#loadingWrap').delay(D_LOADING).fadeOut('slow', function()
+            {
+               if (!res.match(/^-\d+$/))  //success
+               {
+                  document.getElementById("searchProbsPages").innerHTML = res;
+               }
+               else  //failed
+               {  
+                  //echo "1.0";
+                  alert(MSG_SEARCH_ERROR);
+               }
+            });
+         },
+         error: function(xhr)
+         {
+            alert("ajax error: " + xhr.status + " " + xhr.statusText);
+            $('#loadingWrap').hide();
+         }
+      });
+   });
+   //***problem search end
+   
+   // exam search
+   $('.btn_submit_new.searchExams').click(function()
+   {
+      var searchExamsName = document.getElementById("searchExamsName").value;
+   
+      var statusCheckbox = 0;
+      if (document.getElementById("searchExamsCheckBox1").checked == true)
+      {
+         statusCheckbox += 1; 
+      }
+      if (document.getElementById("searchExamsCheckBox2").checked == true)
+      {
+         statusCheckbox += 2; 
+      }
+      
+      var str;                            //送出内文字串  
+      
+      //ajax
+      str = "cmd=searchExams" + "&searchExamsName=" + encodeURIComponent(searchExamsName) +
+            "&statusCheckbox=" + statusCheckbox;
+      url_str = "Exam/Exams_load.php?";
+
+      $('#loadingWrap').show();
+      $.ajax
+      ({
+         beforeSend: function()
+         {
+            //alert(url_str + str);
+         },
+         type: 'GET',
+         url: url_str + str,
+         cache: false,
+         success: function(res)
+         {
+            $('#loadingWrap').delay(D_LOADING).fadeOut('slow', function()
+            {
+               if (!res.match(/^-\d+$/))  //success
+               {
+                  document.getElementById("searchExamsPages").innerHTML = res;
+               }
+               else  //failed
+               {  
+                  //echo "1.0";
+                  alert(MSG_SEARCH_ERROR);
+               }
+            });
+         },
+         error: function(xhr)
+         {
+            alert("ajax error: " + xhr.status + " " + xhr.statusText);
+            $('#loadingWrap').hide();
+         }
+      });
+   });
+   //***exam end
+
    //computerList search, added by Phantom, 20120613
    $('.btn_submit_new.userMgmt_confirm').click(function()
    {
@@ -2052,7 +2107,7 @@ $(function()
 	//******** Search input hints ********//
 	var _input = $('#userSearch');
 	
-	// _input.attr('value', user_searchHint);//eric20150604Edit
+	_input.attr('value', user_searchHint);
 	
 	_input.focus(function() {
 		if($(this).hasClass('empty')) {
@@ -2067,7 +2122,7 @@ $(function()
 	
    var _input_1 = $('#scanSearch');
 	
-	// _input_1.attr('value', user_searchHint);//eric20150604Edit
+	_input_1.attr('value', user_searchHint);
 	
 	_input_1.focus(function() {
 		if($(this).hasClass('empty')) {

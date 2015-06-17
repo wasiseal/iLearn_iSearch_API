@@ -7,7 +7,7 @@ function actionSearchCategories(CategoryId, Status)
    url_str = "Category/Categories_action.php?";
    
    //alert(str);
-   //$('#loadingWrap').show();
+   $('#loadingWrap').show();
    $.ajax
    ({
       beforeSend: function()
@@ -51,7 +51,7 @@ function deleteSearchCategories(CategoryId)
    url_str = "Category/Categories_delete.php?";
    
    //alert(str);
-   //$('#loadingWrap').show();
+   $('#loadingWrap').show();
    $.ajax
    ({
       beforeSend: function()
@@ -63,7 +63,7 @@ function deleteSearchCategories(CategoryId)
       cache: false,
       success: function(res)
       {
-         alert(res);
+         //alert(res);
          $('#loadingWrap').delay(D_LOADING).fadeOut('slow', function()
          {
             if (!res.match(/^-\d+$/))  //success
@@ -94,23 +94,23 @@ function modifySearchCategories(CategoryId)
 
 function clickSearchCategoriesPage(obj, n)  //搜尋換頁
 {
-   if (obj.className == "search_category_page active")
+   if (obj.className == "search_page active")
       return;
-   nPage = document.getElementsByName("search_category_page_no")[0].value;
-   document.getElementsByName("search_category_page_no")[0].value = n;
-   str = "search_category_page_begin_no_" + nPage;
-   document.getElementById(str).className = "search_category_page";
-   str = "search_category_page_end_no_" + nPage;
-   document.getElementById(str).className = "search_category_page";
-   str = "search_category_page_begin_no_" + n;
-   document.getElementById(str).className = "search_category_page active";
-   str = "search_category_page_end_no_" + n;
-   document.getElementById(str).className = "search_category_page active"; 
+   nPage = document.getElementsByName("search_page_no")[0].value;
+   document.getElementsByName("search_page_no")[0].value = n;
+   str = "search_page_begin_no_" + nPage;
+   document.getElementById(str).className = "search_page";
+   str = "search_page_end_no_" + nPage;
+   document.getElementById(str).className = "search_page";
+   str = "search_page_begin_no_" + n;
+   document.getElementById(str).className = "search_page active";
+   str = "search_page_end_no_" + n;
+   document.getElementById(str).className = "search_page active"; 
    
    //clear current table
-   str = "search_category_page" + nPage;
+   str = "search_page" + nPage;
    document.getElementById(str).style.display = "none";
-   str = "search_category_page" + n;
+   str = "search_page" + n;
    document.getElementById(str).style.display = "block";
 }
 

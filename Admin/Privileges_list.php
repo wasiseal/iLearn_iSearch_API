@@ -9,23 +9,23 @@ function modifySearchPrivileges(UserId)
 
 function clickSearchPrivilegesPage(obj, n)  //搜尋換頁
 {
-   if (obj.className == "search_privilege_page active")
+   if (obj.className == "search_page active")
       return;
-   nPage = document.getElementsByName("search_privilege_page_no")[0].value;
-   document.getElementsByName("search_privilege_page_no")[0].value = n;
-   str = "search_privilege_page_begin_no_" + nPage;
-   document.getElementById(str).className = "search_privilege_page";
-   str = "search_privilege_page_end_no_" + nPage;
-   document.getElementById(str).className = "search_privilege_page";
-   str = "search_privilege_page_begin_no_" + n;
-   document.getElementById(str).className = "search_privilege_page active";
-   str = "search_privilege_page_end_no_" + n;
-   document.getElementById(str).className = "search_privilege_page active";	
+   nPage = document.getElementsByName("search_page_no")[0].value;
+   document.getElementsByName("search_page_no")[0].value = n;
+   str = "search_page_begin_no_" + nPage;
+   document.getElementById(str).className = "search_page";
+   str = "search_page_end_no_" + nPage;
+   document.getElementById(str).className = "search_page";
+   str = "search_page_begin_no_" + n;
+   document.getElementById(str).className = "search_page active";
+   str = "search_page_end_no_" + n;
+   document.getElementById(str).className = "search_page active";	
    
    //clear current table
-   str = "search_privilege_page" + nPage;
+   str = "search_page" + nPage;
    document.getElementById(str).style.display = "none";
-   str = "search_privilege_page" + n;
+   str = "search_page" + n;
    document.getElementById(str).style.display = "block";
 }
 </script>

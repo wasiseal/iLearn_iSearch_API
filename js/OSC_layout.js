@@ -143,22 +143,58 @@ $(function() {
 			dates6.not( this ).datepicker( "option", option, date6 );
 		}
 	});
-	
-	var dates0 = $( "#from0" ).datepicker({
-      minDate: new Date(),
-      defaultDate: "+1w",
-      changeMonth: true,
+   
+   var dates0 = $( "#from0" ).datepicker({
+		minDate: new Date(),
+		defaultDate: "+1w",
+		changeMonth: true,
       changeYear: true,
-      numberOfMonths: 1,
-      onSelect: function( selectedDate ) {
-         var option = "minDate",
-            instance = $( this ).data( "datepicker" ),
-            date0 = $.datepicker.parseDate(
-               instance.settings.dateFormat ||
-               $.datepicker._defaults.dateFormat,
-               selectedDate, instance.settings );
-         dates0.not( this ).datepicker( "option", option, date0 );
-      }
-   });
+		numberOfMonths: 1,
+		onSelect: function( selectedDate ) {
+			var option = "minDate",
+				instance = $( this ).data( "datepicker" ),
+				date0 = $.datepicker.parseDate(
+					instance.settings.dateFormat ||
+					$.datepicker._defaults.dateFormat,
+					selectedDate, instance.settings );
+			dates0.not( this ).datepicker( "option", option, date0 );
+		}
+	});
+   
+   var dates7 = $("#from7, #to7" ).datepicker({
+		defaultDate: "+1w",
+		changeMonth: true,
+      changeYear: true,
+		numberOfMonths: 1,
+      
+		onSelect: function( selectedDate ) {
+			var option = this.id == "from7" ? "minDate" : "maxDate",
+				instance = $( this ).data( "datepicker" ),
+				date7 = $.datepicker.parseDate(
+					instance.settings.dateFormat ||
+					$.datepicker._defaults.dateFormat,
+					selectedDate, instance.settings );
+			dates7.not( this ).datepicker( "option", option, date7 );
+		}
+	});
+   
+   var dates8 = $("#exam_expire_time").datepicker({
+      //maxDate: new Date(),
+		defaultDate: "+1w",
+		changeMonth: true,
+      changeYear: true,
+		numberOfMonths: 1,
+      
+		onSelect: function( selectedDate ) {
+			var option = this.id == "exam_expire_time" ? "minDate" : "maxDate",
+				instance = $( this ).data( "datepicker" ),
+				date8 = $.datepicker.parseDate(
+					instance.settings.dateFormat ||
+					$.datepicker._defaults.dateFormat,
+					selectedDate, instance.settings );
+			dates8.not( this ).datepicker( "option", option, date8 );
+		}
+	});
+   
 	
 });

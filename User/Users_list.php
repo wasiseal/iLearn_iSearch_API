@@ -7,7 +7,7 @@ function actionSearchUsers(UserId, Status)
    url_str = "User/Users_action.php?";
    
    //alert(str);
-   //$('#loadingWrap').show();
+   $('#loadingWrap').show();
    $.ajax
    ({
       beforeSend: function()
@@ -51,7 +51,7 @@ function deleteSearchUsers(UserId)
    url_str = "User/Users_delete.php?";
    
    //alert(str);
-   //$('#loadingWrap').show();
+   $('#loadingWrap').show();
    $.ajax
    ({
       beforeSend: function()
@@ -123,23 +123,23 @@ function modifySearchUsers(UserId)
 
 function clickSearchUsersPage(obj, n)  //搜尋換頁
 {
-   if (obj.className == "search_user_page active")
+   if (obj.className == "search_page active")
       return;
-   nPage = document.getElementsByName("search_user_page_no")[0].value;
-   document.getElementsByName("search_user_page_no")[0].value = n;
-   str = "search_user_page_begin_no_" + nPage;
-   document.getElementById(str).className = "search_user_page";
-   str = "search_user_page_end_no_" + nPage;
-   document.getElementById(str).className = "search_user_page";
-   str = "search_user_page_begin_no_" + n;
-   document.getElementById(str).className = "search_user_page active";
-   str = "search_user_page_end_no_" + n;
-   document.getElementById(str).className = "search_user_page active";	
+   nPage = document.getElementsByName("search_page_no")[0].value;
+   document.getElementsByName("search_page_no")[0].value = n;
+   str = "search_page_begin_no_" + nPage;
+   document.getElementById(str).className = "search_page";
+   str = "search_page_end_no_" + nPage;
+   document.getElementById(str).className = "search_page";
+   str = "search_page_begin_no_" + n;
+   document.getElementById(str).className = "search_page active";
+   str = "search_page_end_no_" + n;
+   document.getElementById(str).className = "search_page active";	
    
    //clear current table
-   str = "search_user_page" + nPage;
+   str = "search_page" + nPage;
    document.getElementById(str).style.display = "none";
-   str = "search_user_page" + n;
+   str = "search_page" + n;
    document.getElementById(str).style.display = "block";
 }
 
